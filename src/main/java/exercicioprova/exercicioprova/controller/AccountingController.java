@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import exercicioprova.exercicioprova.dao.AccountingDAO;
 import exercicioprova.exercicioprova.dto.AccountingDTO;
 import exercicioprova.exercicioprova.model.Accounting;
-import exercicioprova.exercicioprova.repository.AccountingRepository;
 import exercicioprova.exercicioprova.service.AccountingService;
 
 import java.util.List;

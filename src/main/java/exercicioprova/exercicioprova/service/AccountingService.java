@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import exercicioprova.exercicioprova.dao.AccountingDAO;
 import exercicioprova.exercicioprova.dto.AccountingDTO;
 import exercicioprova.exercicioprova.model.Accounting;
-import exercicioprova.exercicioprova.repository.AccountingRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class AccountingService {
 
 	@Autowired
-	private AccountingRepository repo;
+	private AccountingDAO repo;
 
 	// public List<Accounting> findAll() {
 	// return repo.findAll();

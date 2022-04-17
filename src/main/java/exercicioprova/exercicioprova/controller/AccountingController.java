@@ -49,7 +49,7 @@ public class AccountingController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity update(long id, @RequestBody Accounting accounting) {
+	public ResponseEntity update(@PathVariable("id") Long id, @RequestBody Accounting accounting) {
 		return service.updateAccounting(id, accounting);
 	}
 

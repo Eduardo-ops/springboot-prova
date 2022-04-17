@@ -40,7 +40,7 @@ public class AccountingService {
 		return repo.save(accounting);
 	}
 
-	public ResponseEntity updateAccounting(long id, @RequestBody Accounting accounting) {
+	public ResponseEntity updateAccounting(@PathVariable("id") Long id, @RequestBody Accounting accounting) {
 		return repo.findById(id).map(record -> {
 			record.setType(accounting.getType());
 			record.setDescription(accounting.getDescription());

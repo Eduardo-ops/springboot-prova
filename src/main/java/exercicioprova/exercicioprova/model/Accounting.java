@@ -2,6 +2,7 @@ package exercicioprova.exercicioprova.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,24 +16,25 @@ import exercicioprova.exercicioprova.enums.AccountingType;
 public class Accounting implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String code;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long code;
 
-	@Column()
-	private AccountingType type;
-	@Column()
+	@Column(name = "type")
+	private String type;
+	@Column(name = "description")
 	private String description;
-	@Column()
+	@Column(name = "date")
 	private Date date;
-	@Column()
+	@Column(name = "value")
 	private Double value;
-	@Column()
+	@Column(name = "profit")
 	private Double profit;
 
 	public Accounting() {
 	}
 
-	public Accounting(AccountingType type, String description, Date date, Double value, Double profit) {
+	public Accounting(Long code, String type, String description, Date date, Double value, Double profit) {
+		this.code = code;
 		this.type = type;
 		this.description = description;
 		this.date = date;
@@ -40,19 +42,19 @@ public class Accounting implements Serializable {
 		this.profit = profit;
 	}
 
-	public String getCode() {
+	public Long getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(Long code) {
 		this.code = code;
 	}
 
-	public AccountingType getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(AccountingType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
@@ -86,6 +88,23 @@ public class Accounting implements Serializable {
 
 	public void setProfit(Double profit) {
 		this.profit = profit;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(code);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Accounting other = (Accounting) obj;
+		return Objects.equals(code, other.code);
 	}
 
 }

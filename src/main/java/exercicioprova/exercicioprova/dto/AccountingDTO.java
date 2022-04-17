@@ -36,7 +36,7 @@ public class AccountingDTO {
 	}
 
 	public AccountingDTO(Accounting accounting) {
-		this.type = accounting.getType().getCode();
+		//this.type = accounting.getType().getCode();
 		this.description = accounting.getDescription();
 		this.date = accounting.getDate();
 		this.value = accounting.getValue();

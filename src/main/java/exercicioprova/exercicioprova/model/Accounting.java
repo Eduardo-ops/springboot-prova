@@ -1,19 +1,24 @@
 package exercicioprova.exercicioprova.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import exercicioprova.exercicioprova.enums.AccountingType;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Accounting implements Serializable {
+public class Accounting extends Auditing implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +34,9 @@ public class Accounting implements Serializable {
 	private Double value;
 	@Column(name = "profit")
 	private Double profit;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Auditing> auditings = new ArrayList<Auditing>();
 
 	public Accounting() {
 	}
@@ -88,6 +96,14 @@ public class Accounting implements Serializable {
 
 	public void setProfit(Double profit) {
 		this.profit = profit;
+	}
+
+	public List<Auditing> getAuditings() {
+		return auditings;
+	}
+
+	public void setAuditings(List<Auditing> auditings) {
+		this.auditings = auditings;
 	}
 
 	@Override

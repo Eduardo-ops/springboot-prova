@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import exercicioprova.exercicioprova.model.Accounting;
+import exercicioprova.exercicioprova.model.Auditing;
 import exercicioprova.exercicioprova.service.AccountingService;
 
 import java.util.List;
@@ -28,6 +29,11 @@ public class AccountingController {
 	@GetMapping("")
 	public List<Accounting> findAll() {
 		return service.findAll();
+	}
+
+	@GetMapping("/auditings")
+	public List<Auditing> findAllAuditing() {
+		return service.findAllAuditing();
 	}
 
 	@PostMapping("")

@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import exercicioprova.exercicioprova.dao.AccountingDAO;
+import exercicioprova.exercicioprova.dao.AuditingDAO;
 import exercicioprova.exercicioprova.model.Accounting;
+import exercicioprova.exercicioprova.model.Auditing;
 
 import java.util.List;
 import javax.persistence.JoinColumn;
@@ -21,9 +23,14 @@ public class AccountingService {
 
 	@Autowired
 	private AccountingDAO repo;
+	private AuditingDAO repoAuditing;
 
 	public List<Accounting> findAll() {
 		return repo.findAll();
+	}
+
+	public List<Auditing> findAllAuditing() {
+		return repoAuditing.findAll();
 	}
 
 	public Accounting createAccounting(@RequestBody Accounting accounting) {
